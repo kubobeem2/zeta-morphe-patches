@@ -5,24 +5,31 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.zeta.patches.shared.Constants.ZETA
-import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
- * Play Integrity API の showDialog (ダイアログ呼び出し) のフィンガープリント。
+ * zeta 3.51.63 の実物を解析した結果（DEX 直読み）:
  *
- * 以前の指定（戻り値 Task + 引数 (Activity, int) のみ）は曖昧すぎて、
- * DEX 内の同シグネチャの別メソッドに当たるか、そもそも当たらないため
- * ダイアログが消えなかった。name で絞り、さらに抽象メソッド（IntegrityManager
- * インターフェース側の宣言）を除外する。抽象メソッドに addInstructions すると
- * implementation が null で NPE になりパッチ全体が死ぬため、除外が必須。
+ * - Play Integrity API の showDialog はこのアプリに存在しない。
+ *   IntegrityManager（旧 play-core）は requestIntegrityToken しか持たず、
+ *   呼び出し元は AppsFlyer（広告収益計測）のみ。つまり showDialog 狙いの
+ *   パッチは最初から何にも当たっていなかった。1.2.1 / 1.2.2 が効かなかった理由。
+ *
+ * - ダイアログの正体は PairIP（商用ライセンス検証）のペイウォール。
+ *   LicenseClient.processResponse はライセンスサーバーの応答コード 2
+ *   (NOT_LICENSED) を受けると、バンドル内の PAYWALL_INTENT（PendingIntent）
+ *   を取り出して startPaywallActivity に渡し、Play ストアの
+ *   「このアプリを Play から入手」画面を開く。再署名・サイドロードした
+ *   アプリはサーバー側の署名検証に必ず失敗するため、必ずここに来る。
+ *   startPaywallActivity 内では 30 秒後のアプリ終了も予約される。
+ *
+ * 対策: startPaywallActivity を先頭で即 return-void し、
+ * ペイウォール（Play ストア画面）の起動と終了予約の両方を止める。
+ * 呼び出し元は processResponse の 1 箇所のみで、他に影響はない。
  */
-object IntegrityShowDialogFingerprint : Fingerprint(
-    name = "showDialog",
-    returnType = "Lcom/google/android/gms/tasks/Task;",
-    parameters = listOf("Landroid/app/Activity;", "I"),
-    custom = { method, _ ->
-        (method.accessFlags and AccessFlags.ABSTRACT.value) == 0
-    }
+object StartPaywallActivityFingerprint : Fingerprint(
+    name = "startPaywallActivity",
+    returnType = "V",
+    parameters = listOf("Landroid/app/PendingIntent;")
 )
 
 /**
@@ -38,30 +45,25 @@ object GetInstallerPackageNameFingerprint : Fingerprint(
 )
 
 /**
- * Play Integrity API による「Google Playから入手してください」ダイアログおよび
- * getInstallerPackageName によるストア判定を無力化するパッチ
+ * PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」
+ * 画面）を無力化するパッチ。再署名・サイドロードでライセンス検証に失敗しても
+ * Play ストア画面を開かず、アプリをそのまま使えるようにする。
  */
 @Suppress("unused")
 val bypassPlayIntegrityPatch = patch(
-    name = "Bypass Play Integrity & Installer Check",
-    description = "Play Integrity API のダイアログ表示（Google Playから入手してください）およびインストーラー検証を無効化し、強制終了を防ぎます。",
+    name = "Bypass PairIP License Paywall",
+    description = "PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。",
     default = true
 ) {
     compatibleWith(ZETA)
 
     execute {
-        // 1. showDialog(...) の先頭で Tasks.forResult(0) を即座にリターン
+        // 1. LicenseClient.startPaywallActivity(...) を先頭で即リターン
+        //    （ペイウォール Intent の起動と 30 秒後の終了予約を両方止める）
         try {
-            IntegrityShowDialogFingerprint.method.addInstructions(
+            StartPaywallActivityFingerprint.method.addInstructions(
                 0,
-                """
-                    const/4 v0, 0x0
-                    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-                    move-result-object v0
-                    invoke-static {v0}, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
-                    move-result-object v0
-                    return-object v0
-                """.trimIndent()
+                "return-void"
             )
         } catch (_: PatchException) {
             // 対象メソッドが存在しない場合はスキップ
