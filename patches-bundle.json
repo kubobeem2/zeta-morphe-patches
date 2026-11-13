@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-13T08:14:05",
-  "description": "## 1.0.0 (2026-11-13)\n\n### ✨ New Features\n\n* initial release of zeta morphe patches with ads block, tps monitor, and hermes memory ([15ce92b](https://github.com/kubobeem2/zeta-morphe-patches/commit/15ce92bbd1ec77f44e3b1a00fc933765831dc4ab))\n\n### 🐛 Bug Fixes\n\n* make gradlew executable ([993929c](https://github.com/kubobeem2/zeta-morphe-patches/commit/993929c6650e33a35eb1935813ccefe66bd95901))\n* use Fingerprint.method directly instead of result.mutableMethod ([3448a72](https://github.com/kubobeem2/zeta-morphe-patches/commit/3448a727b2054c85652ebb19952295eb9011b44c))",
-  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.0.0/patches-1.0.0.mpp",
+  "created_at": "2026-11-13T08:25:38",
+  "description": "## [1.0.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.0.0...v1.0.1) (2026-11-13)\n\n### 🐛 Bug Fixes\n\n* **ads:** catch PatchException when ad sdk classes are absent ([c3f4c4c](https://github.com/kubobeem2/zeta-morphe-patches/commit/c3f4c4cd0f789a74162741c2f6d14eb2edbb72e6))",
+  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.0.1/patches-1.0.1.mpp",
   "signature_download_url": "",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

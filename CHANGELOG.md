@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.0.0...v1.0.1) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+* **ads:** catch PatchException when ad sdk classes are absent ([c3f4c4c](https://github.com/kubobeem2/zeta-morphe-patches/commit/c3f4c4cd0f789a74162741c2f6d14eb2edbb72e6))
+
 ## 1.0.0 (2026-11-13)
 
 ### ✨ New Features
