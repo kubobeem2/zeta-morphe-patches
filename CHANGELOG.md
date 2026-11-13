@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.2...v1.2.3) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+* **integrity:** bypass PairIP license paywall instead of nonexistent showDialog ([7a64773](https://github.com/kubobeem2/zeta-morphe-patches/commit/7a64773879deb61c7dbb93cdaaab8faf309e8979))
+* **integrity:** restore Kotlin source (previous push stored base64 text) ([1058484](https://github.com/kubobeem2/zeta-morphe-patches/commit/1058484a96f1af4aae29c5b4ad901cada6f46858))
+
 ## [1.2.2](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.1...v1.2.2) (2026-11-13)
 
 ### 🐛 Bug Fixes

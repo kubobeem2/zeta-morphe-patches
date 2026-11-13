@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "patches": [
     {
       "name": "Block Ads",
@@ -37,8 +37,8 @@
       "options": []
     },
     {
-      "name": "Bypass Play Integrity & Installer Check",
-      "description": "Play Integrity API のダイアログ表示（Google Playから入手してください）およびインストーラー検証を無効化し、強制終了を防ぎます。",
+      "name": "Bypass PairIP License Paywall",
+      "description": "PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。",
       "default": true,
       "category": null,
       "compatiblePackages": [
