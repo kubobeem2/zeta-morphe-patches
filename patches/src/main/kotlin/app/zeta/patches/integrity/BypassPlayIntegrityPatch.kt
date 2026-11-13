@@ -1,1 +1,85 @@
-cGFja2FnZSBhcHAuemV0YS5wYXRjaGVzLmludGVncml0eQoKaW1wb3J0IGFwcC5tb3JwaGUucGF0Y2hlci5GaW5nZXJwcmludAppbXBvcnQgYXBwLm1vcnBoZS5wYXRjaGVyLmV4dGVuc2lvbnMuSW5zdHJ1Y3Rpb25FeHRlbnNpb25zLmFkZEluc3RydWN0aW9ucwppbXBvcnQgYXBwLm1vcnBoZS5wYXRjaGVyLnBhdGNoLlBhdGNoRXhjZXB0aW9uCmltcG9ydCBhcHAubW9ycGhlLnBhdGNoZXIucGF0Y2gucGF0Y2gKaW1wb3J0IGFwcC56ZXRhLnBhdGNoZXMuc2hhcmVkLkNvbnN0YW50cy5aRVRBCgovKioKICogemV0YSAzLjUxLjYzIOOBruWun+eJqeOCkuino+aekOOBl+OBn+e1kOaenO+8iERFWCDnm7Toqq3jgb/vvIk6CiAqCiAqIC0gUGxheSBJbnRlZ3JpdHkgQVBJIOOBriBzaG93RGlhbG9nIOOBr+OBk+OBruOCouODl+ODquOBq+WtmOWcqOOBl+OBquOBhOOAggogKiAgIEludGVncml0eU1hbmFnZXLvvIjml6cgcGxheS1jb3Jl77yJ44GvIHJlcXVlc3RJbnRlZ3JpdHlUb2tlbiDjgZfjgYvmjIHjgZ/jgZrjgIEKICogICDlkbzjgbPlh7rjgZflhYPjga8gQXBwc0ZseWVy77yI5bqD5ZGK5Y+O55uK6KiI5ris77yJ44Gu44G/44CC44Gk44G+44KKIHNob3dEaWFsb2cg54uZ44GE44GuCiAqICAg44OR44OD44OB44Gv5pyA5Yid44GL44KJ5L2V44Gr44KC5b2T44Gf44Gj44Gm44GE44Gq44GL44Gj44Gf44CCMS4yLjEgLyAxLjIuMiDjgYzlirnjgYvjgarjgYvjgaPjgZ/nkIbnlLHjgIIKICoKICogLSDjg4DjgqTjgqLjg63jgrDjga7mraPkvZPjga8gUGFpcklQ77yI5ZWG55So44Op44Kk44K744Oz44K55qSc6Ki877yJ44Gu44Oa44Kk44Km44Kp44O844Or44CCCiAqICAgTGljZW5zZUNsaWVudC5wcm9jZXNzUmVzcG9uc2Ug44Gv44Op44Kk44K744Oz44K544K144O844OQ44O844Gu5b+c562U44Kz44O844OJIDIKICogICAoTk9UX0xJQ0VOU0VEKSDjgpLlj5fjgZHjgovjgajjgIHjg5Djg7Pjg4njg6vlhoXjga4gUEFZV0FMTF9JTlRFTlTvvIhQZW5kaW5nSW50ZW5077yJCiAqICAg44KS5Y+W44KK5Ye644GX44GmIHN0YXJ0UGF5d2FsbEFjdGl2aXR5IOOBq+a4oeOBl+OAgVBsYXkg44K544OI44Ki44GuCiAqICAg44CM44GT44Gu44Ki44OX44Oq44KSIFBsYXkg44GL44KJ5YWl5omL44CN55S76Z2i44KS6ZaL44GP44CC5YaN572y5ZCN44O744K144Kk44OJ44Ot44O844OJ44GX44GfCiAqICAg44Ki44OX44Oq44Gv44K144O844OQ44O85YG044Gu572y5ZCN5qSc6Ki844Gr5b+F44Ga5aSx5pWX44GZ44KL44Gf44KB44CB5b+F44Ga44GT44GT44Gr5p2l44KL44CCCiAqICAgc3RhcnRQYXl3YWxsQWN0aXZpdHkg5YaF44Gn44GvIDMwIOenkuW+jOOBruOCouODl+ODque1guS6huOCguS6iOe0hOOBleOCjOOCi+OAggogKgogKiDlr77nrZY6IHN0YXJ0UGF5d2FsbEFjdGl2aXR5IOOCkuWFiOmgreOBp+WNsyByZXR1cm4tdm9pZCDjgZfjgIEKICog44Oa44Kk44Km44Kp44O844Or77yIUGxheSDjgrnjg4jjgqLnlLvpnaLvvInjga7otbfli5XjgajntYLkuobkuojntITjga7kuKHmlrnjgpLmraLjgoHjgovjgIIKICog5ZG844Gz5Ye644GX5YWD44GvIHByb2Nlc3NSZXNwb25zZSDjga4gMSDnrofmiYDjga7jgb/jgafjgIHku5bjgavlvbHpn7/jga/jgarjgYTjgIIKICovCm9iamVjdCBTdGFydFBheXdhbGxBY3Rpdml0eUZpbmdlcnByaW50IDogRmluZ2VycHJpbnQoCiAgICBuYW1lID0gInN0YXJ0UGF5d2FsbEFjdGl2aXR5IiwKICAgIHJldHVyblR5cGUgPSAiViIsCiAgICBwYXJhbWV0ZXJzID0gbGlzdE9mKCJMYW5kcm9pZC9hcHAvUGVuZGluZ0ludGVudDsiKQopCgovKioKICogZ2V0SW5zdGFsbGVyUGFja2FnZU5hbWUoU3RyaW5nKSDjga7jg5XjgqPjg7Pjgqzjg7zjg5fjg6rjg7Pjg4jjgIIKICog5rOo5oSPOiDjgZPjgozjga8gQW5kcm9pZCDjg5Xjg6zjg7zjg6Djg6/jg7zjgq8gKFBhY2thZ2VNYW5hZ2VyKSDjga7jg6Hjgr3jg4Pjg4njgafjgIEKICog44Ki44OX44Oq44GuIERFWCDlhoXjgavjga/lrprnvqnjgYzlrZjlnKjjgZfjgarjgYTjgILjgqLjg5fjg6rlgbTjgavlkIzlkI3jga7jg6njg4Pjg5Hjg7zjgYwKICog44GC44KL5aC05ZCI44Gr44Gu44G/5b2T44Gf44KL44OZ44K544OI44Ko44OV44Kp44O844OI44CC5b2T44Gf44KJ44Gq44GP44Gm44KC54Sh5a6z44CCCiAqLwpvYmplY3QgR2V0SW5zdGFsbGVyUGFja2FnZU5hbWVGaW5nZXJwcmludCA6IEZpbmdlcnByaW50KAogICAgbmFtZSA9ICJnZXRJbnN0YWxsZXJQYWNrYWdlTmFtZSIsCiAgICByZXR1cm5UeXBlID0gIkxqYXZhL2xhbmcvU3RyaW5nOyIsCiAgICBwYXJhbWV0ZXJzID0gbGlzdE9mKCJMamF2YS9sYW5nL1N0cmluZzsiKQopCgovKioKICogUGFpcklQIOOBruODqeOCpOOCu+ODs+OCueODmuOCpOOCpuOCqeODvOODq++8iEdvb2dsZSBQbGF544CM44GT44Gu44Ki44OX44Oq44KSIFBsYXkg44GL44KJ5YWl5omL44CNCiAqIOeUu+mdou+8ieOCkueEoeWKm+WMluOBmeOCi+ODkeODg+ODgeOAguWGjee9suWQjeODu+OCteOCpOODieODreODvOODieOBp+ODqeOCpOOCu+ODs+OCueaknOiovOOBq+WkseaVl+OBl+OBpuOCggogKiBQbGF5IOOCueODiOOCoueUu+mdouOCkumWi+OBi+OBmuOAgeOCouODl+ODquOCkuOBneOBruOBvuOBvuS9v+OBiOOCi+OCiOOBhuOBq+OBmeOCi+OAggogKi8KQFN1cHByZXNzKCJ1bnVzZWQiKQp2YWwgYnlwYXNzUGxheUludGVncml0eVBhdGNoID0gcGF0Y2goCiAgICBuYW1lID0gIkJ5cGFzcyBQYWlySVAgTGljZW5zZSBQYXl3YWxsIiwKICAgIGRlc2NyaXB0aW9uID0gIlBhaXJJUCDjga7jg6njgqTjgrvjg7Pjgrnjg5rjgqTjgqbjgqnjg7zjg6vvvIhHb29nbGUgUGxheeOAjOOBk+OBruOCouODl+ODquOCkiBQbGF5IOOBi+OCieWFpeaJi+OAjeeUu+mdou+8ieOCkueEoeWKueWMluOBl+OAgeWGjee9suWQjeODu+OCteOCpOODieODreODvOODieOBl+OBn+OCouODl+ODquOBp+OCguOBneOBruOBvuOBvuS9v+OBiOOCi+OCiOOBhuOBq+OBl+OBvuOBmeOAgiIsCiAgICBkZWZhdWx0ID0gdHJ1ZQopIHsKICAgIGNvbXBhdGlibGVXaXRoKFpFVEEpCgogICAgZXhlY3V0ZSB7CiAgICAgICAgLy8gMS4gTGljZW5zZUNsaWVudC5zdGFydFBheXdhbGxBY3Rpdml0eSguLi4pIOOCkuWFiOmgreOBp+WNs+ODquOCv+ODvOODswogICAgICAgIC8vICAgIO+8iOODmuOCpOOCpuOCqeODvOODqyBJbnRlbnQg44Gu6LW35YuV44GoIDMwIOenkuW+jOOBrue1guS6huS6iOe0hOOCkuS4oeaWueatouOCgeOCi++8iQogICAgICAgIHRyeSB7CiAgICAgICAgICAgIFN0YXJ0UGF5d2FsbEFjdGl2aXR5RmluZ2VycHJpbnQubWV0aG9kLmFkZEluc3RydWN0aW9ucygKICAgICAgICAgICAgICAgIDAsCiAgICAgICAgICAgICAgICAicmV0dXJuLXZvaWQiCiAgICAgICAgICAgICkKICAgICAgICB9IGNhdGNoIChfOiBQYXRjaEV4Y2VwdGlvbikgewogICAgICAgICAgICAvLyDlr77osaHjg6Hjgr3jg4Pjg4njgYzlrZjlnKjjgZfjgarjgYTloLTlkIjjga/jgrnjgq3jg4Pjg5cKICAgICAgICB9CgogICAgICAgIC8vIDIuIGdldEluc3RhbGxlclBhY2thZ2VOYW1lKFN0cmluZykg44Gu5oi744KK5YCk44KSICJjb20uYW5kcm9pZC52ZW5kaW5nIiDjgavlm7rlrpoKICAgICAgICB0cnkgewogICAgICAgICAgICBHZXRJbnN0YWxsZXJQYWNrYWdlTmFtZUZpbmdlcnByaW50Lm1ldGhvZC5hZGRJbnN0cnVjdGlvbnMoCiAgICAgICAgICAgICAgICAwLAogICAgICAgICAgICAgICAgIiIiCiAgICAgICAgICAgICAgICAgICAgY29uc3Qtc3RyaW5nIHYwLCAiY29tLmFuZHJvaWQudmVuZGluZyIKICAgICAgICAgICAgICAgICAgICByZXR1cm4tb2JqZWN0IHYwCiAgICAgICAgICAgICAgICAiIiIudHJpbUluZGVudCgpCiAgICAgICAgICAgICkKICAgICAgICB9IGNhdGNoIChfOiBQYXRjaEV4Y2VwdGlvbikgewogICAgICAgICAgICAvLyDlr77osaHjg6Hjgr3jg4Pjg4njgYzlrZjlnKjjgZfjgarjgYTloLTlkIjjga/jgrnjgq3jg4Pjg5cKICAgICAgICB9CiAgICB9Cn0K
+package app.zeta.patches.integrity
+
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.patch
+import app.zeta.patches.shared.Constants.ZETA
+
+/**
+ * zeta 3.51.63 の実物を解析した結果（DEX 直読み）:
+ *
+ * - Play Integrity API の showDialog はこのアプリに存在しない。
+ *   IntegrityManager（旧 play-core）は requestIntegrityToken しか持たず、
+ *   呼び出し元は AppsFlyer（広告収益計測）のみ。つまり showDialog 狙いの
+ *   パッチは最初から何にも当たっていなかった。1.2.1 / 1.2.2 が効かなかった理由。
+ *
+ * - ダイアログの正体は PairIP（商用ライセンス検証）のペイウォール。
+ *   LicenseClient.processResponse はライセンスサーバーの応答コード 2
+ *   (NOT_LICENSED) を受けると、バンドル内の PAYWALL_INTENT（PendingIntent）
+ *   を取り出して startPaywallActivity に渡し、Play ストアの
+ *   「このアプリを Play から入手」画面を開く。再署名・サイドロードした
+ *   アプリはサーバー側の署名検証に必ず失敗するため、必ずここに来る。
+ *   startPaywallActivity 内では 30 秒後のアプリ終了も予約される。
+ *
+ * 対策: startPaywallActivity を先頭で即 return-void し、
+ * ペイウォール（Play ストア画面）の起動と終了予約の両方を止める。
+ * 呼び出し元は processResponse の 1 箇所のみで、他に影響はない。
+ */
+object StartPaywallActivityFingerprint : Fingerprint(
+    name = "startPaywallActivity",
+    returnType = "V",
+    parameters = listOf("Landroid/app/PendingIntent;")
+)
+
+/**
+ * getInstallerPackageName(String) のフィンガープリント。
+ * 注意: これは Android フレームワーク (PackageManager) のメソッドで、
+ * アプリの DEX 内には定義が存在しない。アプリ側に同名のラッパーが
+ * ある場合にのみ当たるベストエフォート。当たらなくても無害。
+ */
+object GetInstallerPackageNameFingerprint : Fingerprint(
+    name = "getInstallerPackageName",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf("Ljava/lang/String;")
+)
+
+/**
+ * PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」
+ * 画面）を無力化するパッチ。再署名・サイドロードでライセンス検証に失敗しても
+ * Play ストア画面を開かず、アプリをそのまま使えるようにする。
+ */
+@Suppress("unused")
+val bypassPlayIntegrityPatch = patch(
+    name = "Bypass PairIP License Paywall",
+    description = "PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。",
+    default = true
+) {
+    compatibleWith(ZETA)
+
+    execute {
+        // 1. LicenseClient.startPaywallActivity(...) を先頭で即リターン
+        //    （ペイウォール Intent の起動と 30 秒後の終了予約を両方止める）
+        try {
+            StartPaywallActivityFingerprint.method.addInstructions(
+                0,
+                "return-void"
+            )
+        } catch (_: PatchException) {
+            // 対象メソッドが存在しない場合はスキップ
+        }
+
+        // 2. getInstallerPackageName(String) の戻り値を "com.android.vending" に固定
+        try {
+            GetInstallerPackageNameFingerprint.method.addInstructions(
+                0,
+                """
+                    const-string v0, "com.android.vending"
+                    return-object v0
+                """.trimIndent()
+            )
+        } catch (_: PatchException) {
+            // 対象メソッドが存在しない場合はスキップ
+        }
+    }
+}
