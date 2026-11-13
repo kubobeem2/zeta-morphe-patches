@@ -45,6 +45,23 @@ object GetInstallerPackageNameFingerprint : Fingerprint(
 )
 
 /**
+ * StartupLauncher.launch() のフィンガープリント。
+ * PairIP の暗号化 VM の起動プログラム（"kwqoUTAVViJwNcsX"）を
+ * VMRunner.invoke で走らせる入口。アプリ起動時の <clinit>（MainApplication /
+ * CoreComponentFactory / AppComponentFactory）から呼ばれる。
+ * Play Protect を OFF にしても画面が出続けることから、ペイウォールの
+ * 残るトリガーはこの VM 内と推定される。launch() 自体を止めて
+ * VM の起動プログラムが走らないようにする実験的対策。
+ * クラスで絞る（同名 launch() の誤爆防止）。
+ */
+object StartupLauncherLaunchFingerprint : Fingerprint(
+    name = "launch",
+    returnType = "V",
+    parameters = emptyList(),
+    custom = { _, classDef -> classDef.type == "Lcom/pairip/StartupLauncher;" }
+)
+
+/**
  * PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」
  * 画面）を無力化するパッチ。再署名・サイドロードでライセンス検証に失敗しても
  * Play ストア画面を開かず、アプリをそのまま使えるようにする。
@@ -77,6 +94,18 @@ val bypassPlayIntegrityPatch = patch(
                     const-string v0, "com.android.vending"
                     return-object v0
                 """.trimIndent()
+            )
+        } catch (_: PatchException) {
+            // 対象メソッドが存在しない場合はスキップ
+        }
+
+        // 3. StartupLauncher.launch() を先頭で即リターン
+        //    （PairIP 暗号化 VM の起動プログラムを走らせない。
+        //     Play Protect OFF でも画面が出るため、VM 内が残るトリガーと推定）
+        try {
+            StartupLauncherLaunchFingerprint.method.addInstructions(
+                0,
+                "return-void"
             )
         } catch (_: PatchException) {
             // 対象メソッドが存在しない場合はスキップ
