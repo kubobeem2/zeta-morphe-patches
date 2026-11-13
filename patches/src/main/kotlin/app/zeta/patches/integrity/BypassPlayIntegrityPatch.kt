@@ -5,17 +5,31 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.zeta.patches.shared.Constants.ZETA
+import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
- * Play Integrity API の showDialog (ダイアログ呼び出し) のフィンガープリント
+ * Play Integrity API の showDialog (ダイアログ呼び出し) のフィンガープリント。
+ *
+ * 以前の指定（戻り値 Task + 引数 (Activity, int) のみ）は曖昧すぎて、
+ * DEX 内の同シグネチャの別メソッドに当たるか、そもそも当たらないため
+ * ダイアログが消えなかった。name で絞り、さらに抽象メソッド（IntegrityManager
+ * インターフェース側の宣言）を除外する。抽象メソッドに addInstructions すると
+ * implementation が null で NPE になりパッチ全体が死ぬため、除外が必須。
  */
 object IntegrityShowDialogFingerprint : Fingerprint(
+    name = "showDialog",
     returnType = "Lcom/google/android/gms/tasks/Task;",
-    parameters = listOf("Landroid/app/Activity;", "I")
+    parameters = listOf("Landroid/app/Activity;", "I"),
+    custom = { method, _ ->
+        (method.accessFlags and AccessFlags.ABSTRACT.value) == 0
+    }
 )
 
 /**
- * getInstallerPackageName(String) のフィンガープリント
+ * getInstallerPackageName(String) のフィンガープリント。
+ * 注意: これは Android フレームワーク (PackageManager) のメソッドで、
+ * アプリの DEX 内には定義が存在しない。アプリ側に同名のラッパーが
+ * ある場合にのみ当たるベストエフォート。当たらなくても無害。
  */
 object GetInstallerPackageNameFingerprint : Fingerprint(
     name = "getInstallerPackageName",

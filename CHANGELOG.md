@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.1...v1.2.2) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+* **integrity:** narrow showDialog fingerprint by name and exclude abstract methods ([dc99756](https://github.com/kubobeem2/zeta-morphe-patches/commit/dc997566b04af44351d32f4f66f64fb577beaacf))
+
 ## [1.2.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.0...v1.2.1) (2026-11-13)
 
 ### 🐛 Bug Fixes
