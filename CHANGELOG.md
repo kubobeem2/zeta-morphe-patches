@@ -1,3 +1,9 @@
+## [1.2.5](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.4...v1.2.5) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+* **integrity:** revert StartupLauncher.launch NOP (VM startup is essential, app crashes) ([2cdb8f0](https://github.com/kubobeem2/zeta-morphe-patches/commit/2cdb8f012cdfc81d35f1f2e0b7c28dd63870a3f0))
+
 ## [1.2.4](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.3...v1.2.4) (2026-11-13)
 
 ### 🐛 Bug Fixes

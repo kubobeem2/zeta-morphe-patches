@@ -7,7 +7,7 @@
 ## 🌟 搭載パッチ一覧
 
 <!-- PATCHES_START -->
-> **[v1.2.4](https://github.com/kubobeem2/zeta-morphe-patches/releases/tag/v1.2.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;6 patches total
+> **[v1.2.5](https://github.com/kubobeem2/zeta-morphe-patches/releases/tag/v1.2.5)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;6 patches total
 <details open>
 <summary>📦 Zeta: AI Chat, Story, Play&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
 <br>
