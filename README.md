@@ -7,9 +7,9 @@
 ## 🌟 搭載パッチ一覧
 
 <!-- PATCHES_START -->
-> **[v1.1.0](https://github.com/kubobeem2/zeta-morphe-patches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
+> **[v1.2.0-dev.1](https://github.com/kubobeem2/zeta-morphe-patches/releases/tag/v1.2.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;6 patches total
 <details open>
-<summary>📦 Zeta: AI Chat, Story, Play&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
+<summary>📦 Zeta: AI Chat, Story, Play&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
 <br>
 
 **Package name:** `com.scatterlab.messenger`
@@ -22,6 +22,7 @@
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Block Ads](#block-ads) | Zeta アプリ内のバナー広告、インタースティシャル広告、リワード広告SDKのロードを遮断・無力化します。 |  |
+| [Bypass Play Integrity & Installer Check](#bypass-play-integrity-installer-check) | Play Integrity API のダイアログ表示（Google Playから入手してください）およびインストーラー検証を無効化し、強制終了を防ぎます。 |  |
 | [Clone Zeta (Change Package Name)](#clone-zeta-change-package-name) | パッケージ名を app.zeta.messenger に変更し、Google Playの監視や「Google Playから入手してください」の整合性チェックを回避します。 |  |
 | [Hermes Persistent Memory](#hermes-persistent-memory) | キャラクター別・ユーザー別の永続記憶をローカル管理し、チャットメッセージにプロンプトとして自動注入します。画面上HUDからON/OFF切り替え可能です。 |  |
 | [LLM Tokens Per Second Monitor](#llm-tokens-per-second-monitor) | チャット生成時の t/s (Tokens Per Second) をリアルタイム計測し、画面上部にフローティングHUDバッジで表示します。 |  |
