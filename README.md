@@ -7,12 +7,27 @@
 ## 🌟 搭載パッチ一覧
 
 <!-- PATCHES_START -->
-| パッチ名 | 説明 | 既定値 |
-| :--- | :--- | :---: |
-| **Block Ads** (`adsPatch`) | バナー広告、インタースティシャル広告、リワード広告SDKのロード・表示を遮断します。 | `true` |
-| **Unlock Client Restrictions** (`unlockLimitsPatch`) | クライアント側での入力文字数制限（maxLength）の拡張および送信待機時間の短縮を行います。 | `true` |
-| **LLM Tokens Per Second Monitor** (`tpsPatch`) | チャット応答時のトークン生成速度（t/s）をリアルタイム計算し、HUDバッジに表示します。 | `true` |
-| **Hermes Persistent Memory** (`hermesMemoryPatch`) | キャラクター別・ユーザー別の記憶（`USER.md` / `MEMORY.md` 相当）をローカル保持し、送信メッセージへ注入します。画面上HUDでいつでも **ON / OFF** の切り替えと設定編集が可能です。 | `true` |
+> **[v1.0.0](https://github.com/kubobeem2/zeta-morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+<details open>
+<summary>📦 Zeta: AI Chat, Story, Play&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
+
+**Package name:** `com.scatterlab.messenger`
+
+**🎯 Supported versions:**
+
+| 3.51.63 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Block Ads](#block-ads) | Zeta アプリ内のバナー広告、インタースティシャル広告、リワード広告SDKのロードを遮断・無力化します。 |  |
+| [Hermes Persistent Memory](#hermes-persistent-memory) | キャラクター別・ユーザー別の永続記憶をローカル管理し、チャットメッセージにプロンプトとして自動注入します。画面上HUDからON/OFF切り替え可能です。 |  |
+| [LLM Tokens Per Second Monitor](#llm-tokens-per-second-monitor) | チャット生成時の t/s (Tokens Per Second) をリアルタイム計測し、画面上部にフローティングHUDバッジで表示します。 |  |
+| [Unlock Client Restrictions](#unlock-client-restrictions) | メッセージ入力文字数制限（maxLength）の緩和およびクライアント側の送信クールダウン待機時間を解除します。 |  |
+
+</details>
+
 <!-- PATCHES_END -->
 
 ---

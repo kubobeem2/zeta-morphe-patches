@@ -37,8 +37,8 @@
       "options": []
     },
     {
-      "name": "Unlock Client Restrictions",
-      "description": "メッセージ入力文字数制限（maxLength）の緩和およびクライアント側の送信クールダウン待機時間を解除します。",
+      "name": "Hermes Persistent Memory",
+      "description": "キャラクター別・ユーザー別の永続記憶をローカル管理し、チャットメッセージにプロンプトとして自動注入します。画面上HUDからON/OFF切り替え可能です。",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -105,8 +105,8 @@
       "options": []
     },
     {
-      "name": "Hermes Persistent Memory",
-      "description": "キャラクター別・ユーザー別の永続記憶をローカル管理し、チャットメッセージにプロンプトとして自動注入します。画面上HUDからON/OFF切り替え可能です。",
+      "name": "Unlock Client Restrictions",
+      "description": "メッセージ入力文字数制限（maxLength）の緩和およびクライアント側の送信クールダウン待機時間を解除します。",
       "default": true,
       "category": null,
       "compatiblePackages": [
