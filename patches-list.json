@@ -1,10 +1,44 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Block Ads",
       "description": "Zeta アプリ内のバナー広告、インタースティシャル広告、リワード広告SDKのロードを遮断・無力化します。",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.scatterlab.messenger",
+          "name": "Zeta: AI Chat, Story, Play",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#6C5CE7",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "3.51.63",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Clone Zeta (Change Package Name)",
+      "description": "パッケージ名を app.zeta.messenger に変更し、Google Playの監視や「Google Playから入手してください」の整合性チェックを回避します。",
       "default": true,
       "category": null,
       "compatiblePackages": [

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-13T08:25:38",
-  "description": "## [1.0.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.0.0...v1.0.1) (2026-11-13)\n\n### 🐛 Bug Fixes\n\n* **ads:** catch PatchException when ad sdk classes are absent ([c3f4c4c](https://github.com/kubobeem2/zeta-morphe-patches/commit/c3f4c4cd0f789a74162741c2f6d14eb2edbb72e6))",
-  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.0.1/patches-1.0.1.mpp",
+  "created_at": "2026-11-13T08:41:36",
+  "description": "## [1.1.0](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.0.1...v1.1.0) (2026-11-13)\n\n### ✨ New Features\n\n* **clone:** add Clone Zeta patch to change package name and bypass integrity checks ([c0ef8f1](https://github.com/kubobeem2/zeta-morphe-patches/commit/c0ef8f198618335e0d8dae6264ad463053c6d58a))",
+  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.1.0/patches-1.1.0.mpp",
   "signature_download_url": "",
-  "version": "1.0.1"
+  "version": "1.1.0"
 }

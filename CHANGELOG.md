@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.0.1...v1.1.0) (2026-11-13)
+
+### ✨ New Features
+
+* **clone:** add Clone Zeta patch to change package name and bypass integrity checks ([c0ef8f1](https://github.com/kubobeem2/zeta-morphe-patches/commit/c0ef8f198618335e0d8dae6264ad463053c6d58a))
+
 ## [1.0.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.0.0...v1.0.1) (2026-11-13)
 
 ### 🐛 Bug Fixes
