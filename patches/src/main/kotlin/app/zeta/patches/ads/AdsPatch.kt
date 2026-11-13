@@ -1,6 +1,7 @@
 package app.zeta.patches.ads
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.zeta.patches.shared.AdMobLoadAdFingerprint
 import app.zeta.patches.shared.AppLovinLoadAdFingerprint
@@ -19,20 +20,28 @@ val adsPatch = patch(
     extendWith("extensions/extension.mpe")
 
     execute {
-        // AdMob loadAd を無力化 (先頭で return-void)
-        AdMobLoadAdFingerprint.method.addInstructions(
-            0,
-            """
-                return-void
-            """.trimIndent()
-        )
+        // AdMob loadAd を無力化 (存在する場合のみ)
+        try {
+            AdMobLoadAdFingerprint.method.addInstructions(
+                0,
+                """
+                    return-void
+                """.trimIndent()
+            )
+        } catch (_: PatchException) {
+            // 対象バージョンに対象のAdMobクラスが存在しない場合は安全にスキップ
+        }
 
-        // AppLovin loadAd を無力化
-        AppLovinLoadAdFingerprint.method.addInstructions(
-            0,
-            """
-                return-void
-            """.trimIndent()
-        )
+        // AppLovin loadAd を無力化 (存在する場合のみ)
+        try {
+            AppLovinLoadAdFingerprint.method.addInstructions(
+                0,
+                """
+                    return-void
+                """.trimIndent()
+            )
+        } catch (_: PatchException) {
+            // 対象バージョンに対象のAppLovinクラスが存在しない場合は安全にスキップ
+        }
     }
 }
