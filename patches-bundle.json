@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-13T08:52:37",
-  "description": "## [1.2.0-dev.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-11-13)\n\n### ✨ New Features\n\n* **integrity:** add Bypass Play Integrity and Installer Check patch ([9082e6d](https://github.com/kubobeem2/zeta-morphe-patches/commit/9082e6da55262ea0e9a93ca64fa118f843916eeb))\n\n### 🐛 Bug Fixes\n\n* **integrity:** fix Fingerprint declaration for getInstallerPackageName ([b8eb45e](https://github.com/kubobeem2/zeta-morphe-patches/commit/b8eb45eb9a5d2bdb61a0aa720c02bfb35fe2d5a1))",
-  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.2.0-dev.1/patches-1.2.0-dev.1.mpp",
+  "created_at": "2026-11-13T13:07:39",
+  "description": "## [1.2.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.0...v1.2.1) (2026-11-13)\n\n### 🐛 Bug Fixes\n\n* **release:** use merge strategy with theirs for backmerge to avoid rebase conflicts ([4c5c2bd](https://github.com/kubobeem2/zeta-morphe-patches/commit/4c5c2bda2aa0fc44eb3ec5791027e9612b1239b7))",
+  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.2.1/patches-1.2.1.mpp",
   "signature_download_url": "",
-  "version": "1.2.0-dev.1"
+  "version": "1.2.1"
 }
