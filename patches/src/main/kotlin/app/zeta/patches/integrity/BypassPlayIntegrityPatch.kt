@@ -18,11 +18,9 @@ object IntegrityShowDialogFingerprint : Fingerprint(
  * getInstallerPackageName(String) のフィンガープリント
  */
 object GetInstallerPackageNameFingerprint : Fingerprint(
+    name = "getInstallerPackageName",
     returnType = "Ljava/lang/String;",
-    parameters = listOf("Ljava/lang/String;"),
-    custom = { method ->
-        method.name == "getInstallerPackageName"
-    }
+    parameters = listOf("Ljava/lang/String;")
 )
 
 /**
