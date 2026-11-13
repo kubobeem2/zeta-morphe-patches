@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-11-13T15:08:46",
-  "description": "## [1.2.3](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.2...v1.2.3) (2026-11-13)\n\n### 🐛 Bug Fixes\n\n* **integrity:** bypass PairIP license paywall instead of nonexistent showDialog ([7a64773](https://github.com/kubobeem2/zeta-morphe-patches/commit/7a64773879deb61c7dbb93cdaaab8faf309e8979))\n* **integrity:** restore Kotlin source (previous push stored base64 text) ([1058484](https://github.com/kubobeem2/zeta-morphe-patches/commit/1058484a96f1af4aae29c5b4ad901cada6f46858))",
-  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.2.3/patches-1.2.3.mpp",
+  "created_at": "2026-11-13T15:38:30",
+  "description": "## [1.2.4](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.3...v1.2.4) (2026-11-13)\n\n### 🐛 Bug Fixes\n\n* **integrity:** disable PairIP VM startup program (StartupLauncher.launch) ([0a93687](https://github.com/kubobeem2/zeta-morphe-patches/commit/0a9368750cf2a325c7bd4b1e3e42fa15095e16ec))",
+  "download_url": "https://github.com/kubobeem2/zeta-morphe-patches/releases/download/v1.2.4/patches-1.2.4.mpp",
   "signature_download_url": "",
-  "version": "1.2.3"
+  "version": "1.2.4"
 }

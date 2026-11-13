@@ -1,3 +1,9 @@
+## [1.2.4](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.3...v1.2.4) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+* **integrity:** disable PairIP VM startup program (StartupLauncher.launch) ([0a93687](https://github.com/kubobeem2/zeta-morphe-patches/commit/0a9368750cf2a325c7bd4b1e3e42fa15095e16ec))
+
 ## [1.2.3](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.2...v1.2.3) (2026-11-13)
 
 ### 🐛 Bug Fixes
