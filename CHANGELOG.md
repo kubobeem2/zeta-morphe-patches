@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.0...v1.2.1) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+* **release:** use merge strategy with theirs for backmerge to avoid rebase conflicts ([4c5c2bd](https://github.com/kubobeem2/zeta-morphe-patches/commit/4c5c2bda2aa0fc44eb3ec5791027e9612b1239b7))
+
 ## [1.2.0](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.1.0...v1.2.0) (2026-11-13)
 
 ### ✨ New Features
