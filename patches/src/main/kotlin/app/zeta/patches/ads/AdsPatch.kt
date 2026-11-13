@@ -20,23 +20,19 @@ val adsPatch = patch(
 
     execute {
         // AdMob loadAd を無力化 (先頭で return-void)
-        AdMobLoadAdFingerprint.result?.let { result ->
-            result.mutableMethod.addInstructions(
-                0,
-                """
-                    return-void
-                """.trimIndent()
-            )
-        }
+        AdMobLoadAdFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """.trimIndent()
+        )
 
         // AppLovin loadAd を無力化
-        AppLovinLoadAdFingerprint.result?.let { result ->
-            result.mutableMethod.addInstructions(
-                0,
-                """
-                    return-void
-                """.trimIndent()
-            )
-        }
+        AppLovinLoadAdFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """.trimIndent()
+        )
     }
 }

@@ -20,23 +20,19 @@ val hermesMemoryPatch = patch(
 
     execute {
         // Activity.onCreate の直後に ZetaExtension.init(activity) を注入
-        ActivityOnCreateFingerprint.result?.let { result ->
-            result.mutableMethod.addInstructions(
-                0,
-                """
-                    invoke-static { p0 }, $EXTENSION_CLASS->init(Landroid/app/Activity;)V
-                """.trimIndent()
-            )
-        }
+        ActivityOnCreateFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p0 }, $EXTENSION_CLASS->init(Landroid/app/Activity;)V
+            """.trimIndent()
+        )
 
         // Activity.onResume にも念のため注入
-        ActivityOnResumeFingerprint.result?.let { result ->
-            result.mutableMethod.addInstructions(
-                0,
-                """
-                    invoke-static { p0 }, $EXTENSION_CLASS->init(Landroid/app/Activity;)V
-                """.trimIndent()
-            )
-        }
+        ActivityOnResumeFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p0 }, $EXTENSION_CLASS->init(Landroid/app/Activity;)V
+            """.trimIndent()
+        )
     }
 }
