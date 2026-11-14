@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.5...v1.3.0) (2026-11-14)
+
+### ✨ New Features
+
+* **integrity:** NOP LicenseClient.checkLicense to silence Java license check ([b5fc996](https://github.com/kubobeem2/zeta-morphe-patches/commit/b5fc996e23aa35c5266778ff5c8ad3f06b26a7e6))
+
 ## [1.2.5](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.4...v1.2.5) (2026-11-13)
 
 ### 🐛 Bug Fixes

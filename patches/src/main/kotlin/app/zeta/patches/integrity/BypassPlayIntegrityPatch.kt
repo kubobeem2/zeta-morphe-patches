@@ -45,6 +45,21 @@ object GetInstallerPackageNameFingerprint : Fingerprint(
 )
 
 /**
+ * LicenseClient.checkLicense(Context) のフィンガープリント。
+ * ライセンスチェックの入口（PUBLIC STATIC）。ここを先頭で即リターン
+ * すればライセンスサービスへの接続自体が行われず、応答も来ないため
+ * ペイウォールもエラーダイアログも出ない。startPaywallActivity の
+ * NOP（1.2.3）だけでは画面が残ったため、Java 側の残留寄与を排除する
+ * 安い実験として追加。VM の autoprotect とは別経路。
+ */
+object CheckLicenseFingerprint : Fingerprint(
+    name = "checkLicense",
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;"),
+    custom = { _, classDef -> classDef.type == "Lcom/pairip/licensecheck/LicenseClient;" }
+)
+
+/**
  * PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」
  * 画面）を無力化するパッチ。再署名・サイドロードでライセンス検証に失敗しても
  * Play ストア画面を開かず、アプリをそのまま使えるようにする。
@@ -77,6 +92,17 @@ val bypassPlayIntegrityPatch = patch(
                     const-string v0, "com.android.vending"
                     return-object v0
                 """.trimIndent()
+            )
+        } catch (_: PatchException) {
+            // 対象メソッドが存在しない場合はスキップ
+        }
+
+        // 3. LicenseClient.checkLicense(Context) を先頭で即リターン
+        //    （ライセンスサービスへの接続自体を止め、Java 側の寄与を排除）
+        try {
+            CheckLicenseFingerprint.method.addInstructions(
+                0,
+                "return-void"
             )
         } catch (_: PatchException) {
             // 対象メソッドが存在しない場合はスキップ
