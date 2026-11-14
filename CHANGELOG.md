@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.3.0...v1.4.0) (2026-11-14)
+
+### ✨ New Features
+
+* **integrity:** add native .so patch to bypass PairIP autoprotect ([20d62dd](https://github.com/kubobeem2/zeta-morphe-patches/commit/20d62dd51f5fcfd853cdfa5ddb6c3ccc5488ad95))
+
 ## [1.3.0](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.2.5...v1.3.0) (2026-11-14)
 
 ### ✨ New Features

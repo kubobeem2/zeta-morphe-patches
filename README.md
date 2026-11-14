@@ -7,9 +7,9 @@
 ## 🌟 搭載パッチ一覧
 
 <!-- PATCHES_START -->
-> **[v1.3.0](https://github.com/kubobeem2/zeta-morphe-patches/releases/tag/v1.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;6 patches total
+> **[v1.4.0](https://github.com/kubobeem2/zeta-morphe-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;7 patches total
 <details open>
-<summary>📦 Zeta: AI Chat, Story, Play&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<summary>📦 Zeta: AI Chat, Story, Play&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
 <br>
 
 **Package name:** `com.scatterlab.messenger`
@@ -22,6 +22,7 @@
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Block Ads](#block-ads) | Zeta アプリ内のバナー広告、インタースティシャル広告、リワード広告SDKのロードを遮断・無力化します。 |  |
+| [Bypass PairIP Autoprotect (native)](#bypass-pairip-autoprotect-native) | PairIP の Play Integrity autoprotect 呼び出しを libpairipcore.so 内で無効化し、Play ストアの「このアプリを Play から入手」画面が出ないようにします（ネイティブ .so パッチ）。 |  |
 | [Bypass PairIP License Paywall](#bypass-pairip-license-paywall) | PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。 |  |
 | [Clone Zeta (Change Package Name)](#clone-zeta-change-package-name) | パッケージ名を app.zeta.messenger に変更し、Google Playの監視や「Google Playから入手してください」の整合性チェックを回避します。 |  |
 | [Hermes Persistent Memory](#hermes-persistent-memory) | キャラクター別・ユーザー別の永続記憶をローカル管理し、チャットメッセージにプロンプトとして自動注入します。画面上HUDからON/OFF切り替え可能です。 |  |
