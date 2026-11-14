@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "patches": [
     {
       "name": "Block Ads",
@@ -37,42 +37,8 @@
       "options": []
     },
     {
-      "name": "Bypass PairIP Autoprotect (native)",
-      "description": "PairIP の Play Integrity autoprotect 呼び出しを libpairipcore.so 内で無効化し、Play ストアの「このアプリを Play から入手」画面が出ないようにします（ネイティブ .so パッチ）。",
-      "default": true,
-      "category": null,
-      "compatiblePackages": [
-        {
-          "packageName": "com.scatterlab.messenger",
-          "name": "Zeta: AI Chat, Story, Play",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#6C5CE7",
-          "signatures": null,
-          "formFactor": "MOBILE",
-          "targets": [
-            {
-              "version": "3.51.63",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Bypass PairIP License Paywall",
-      "description": "PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。",
+      "description": "PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。Java のライセンスチェックとネイティブの Play Integrity autoprotect 呼び出しの両方を止めます。",
       "default": true,
       "category": null,
       "compatiblePackages": [

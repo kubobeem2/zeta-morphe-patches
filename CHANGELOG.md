@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.4.0...v1.4.1) (2026-11-14)
+
+### 🐛 Bug Fixes
+
+* **integrity:** merge native autoprotect patch into the paywall patch ([00b729d](https://github.com/kubobeem2/zeta-morphe-patches/commit/00b729dea35cec794419ffb234ffb62f41459e42))
+
 ## [1.4.0](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.3.0...v1.4.0) (2026-11-14)
 
 ### ✨ New Features
