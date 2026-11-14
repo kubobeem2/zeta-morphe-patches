@@ -1,3 +1,9 @@
+## [1.4.2](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.4.1...v1.4.2) (2026-11-14)
+
+### 🐛 Bug Fixes
+
+* **integrity:** neutralize PairIP integrity verifier and signature check ([3c8a5cf](https://github.com/kubobeem2/zeta-morphe-patches/commit/3c8a5cfb9526bb7db7d5c7f42b3c58c2b22bf997))
+
 ## [1.4.1](https://github.com/kubobeem2/zeta-morphe-patches/compare/v1.4.0...v1.4.1) (2026-11-14)
 
 ### 🐛 Bug Fixes

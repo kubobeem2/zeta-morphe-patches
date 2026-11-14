@@ -31,7 +31,19 @@ import app.zeta.patches.shared.Constants.ZETA
  *   0x6bfc4 内の FLAG 1 分岐（0x6c09c）は通常のクリーンアップへの分岐で、
  *   無条件に飛ばせば autoprotect 呼び出し自体が丸ごとスキップされる。
  *
- * 対策（1つのパッチで両方）:
+ * - さらに v1.4.1 で起動直後にクラッシュすることが判明。logcat の
+ *   tombstone によると libpairipcore.so の 0x59310 で SIGSEGV。
+ *   0x5925c の FNV-1a integrity verifier が原因。Loop 1 で Morphe の
+ *   DEX 編集を検出して不一致になり、Loop 2 がバッファを越えて
+ *   PROT_NONE のガードページを読みに行って死ぬ。0x592d8 の分岐を
+ *   無条件化すれば常に desc[0x18]「primary region matched」を返し、
+ *   Loop 2 は走らない。
+ *
+ * - さらに Java 側の SignatureCheck.verifyIntegrity は Morphe の署名を
+ *   検出すると SignatureTamperedException を投げる（v1.2.4 で確認）。
+ *   DEX 側も NOP して二重に塞ぐ。
+ *
+ * 対策（1つのパッチで全部）:
  *   1. startPaywallActivity を先頭で即 return-void（ペイウォール Intent の
  *      起動と 30 秒後の終了予約を両方止める）
  *   2. getInstallerPackageName の戻り値を "com.android.vending" に固定
@@ -39,6 +51,10 @@ import app.zeta.patches.shared.Constants.ZETA
  *      サービスへの接続自体を止める）
  *   4. libpairipcore.so の 0x6c09c を cbnz から b に書き換え
  *      （autoprotect 呼び出しをスキップ）
+ *   5. libpairipcore.so の 0x592d8 を b.ne から b に書き換え
+ *      （integrity verifier を迂回し、常に「一致」を返す）
+ *   6. SignatureCheck.verifyIntegrity を先頭で即 return-void
+ *      （署名チェックの例外を止める）
  */
 object StartPaywallActivityFingerprint : Fingerprint(
     name = "startPaywallActivity",
@@ -74,16 +90,29 @@ object CheckLicenseFingerprint : Fingerprint(
 )
 
 /**
+ * SignatureCheck.verifyIntegrity(Context) のフィンガープリント。
+ * Morphe の署名を検出すると SignatureTamperedException を投げる
+ * （v1.2.4 で確認）。ここを先頭で即リターンすれば署名チェック自体が
+ * 走らない。ネイティブの integrity verifier 迂回（手順 5）との二重化。
+ */
+object VerifyIntegrityFingerprint : Fingerprint(
+    name = "verifyIntegrity",
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;"),
+    custom = { _, classDef -> classDef.type == "Lcom/pairip/SignatureCheck;" }
+)
+
+/**
  * PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」
  * 画面）を無力化するパッチ。再署名・サイドロードでライセンス検証に失敗しても
  * Play ストア画面を開かず、アプリをそのまま使えるようにする。
- * Java のライセンスチェックとネイティブの Play Integrity autoprotect 呼び出し
- * の両方を止める。
+ * Java のライセンスチェックと署名チェック、ネイティブの Play Integrity
+ * autoprotect 呼び出しと integrity verifier の両方を止める。
  */
 @Suppress("unused")
 val bypassPlayIntegrityPatch = patch(
     name = "Bypass PairIP License Paywall",
-    description = "PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。Java のライセンスチェックとネイティブの Play Integrity autoprotect 呼び出しの両方を止めます。",
+    description = "PairIP のライセンスペイウォール（Google Play「このアプリを Play から入手」画面）を無効化し、再署名・サイドロードしたアプリでもそのまま使えるようにします。Java のライセンスチェックと署名チェック、ネイティブの Play Integrity autoprotect 呼び出しと integrity verifier を止めます。",
     default = true
 ) {
     compatibleWith(ZETA)
@@ -127,6 +156,10 @@ val bypassPlayIntegrityPatch = patch(
         // 4. libpairipcore.so の autoprotect 分岐を無条件分岐に置き換え
         //    0x6c09c: cbnz w8, 0x6d7f4 (c8 ba 00 35) -> b 0x6d7f4 (d6 05 00 14)
         //    （GMS への autoprotect 呼び出しを丸ごとスキップ）
+        // 5. libpairipcore.so の integrity-verifier 分岐を無条件分岐に置き換え
+        //    0x592d8: b.ne 0x592e8 (81 00 00 54) -> b 0x592dc (01 00 00 14)
+        //    （Loop 2 を迂回し、常に desc[0x18]「primary region matched」を返す）
+        //    手順 4・5 は同じ .so の同じバイト列を共有するため、最後に一度だけ書き戻す。
         val soPath = "lib/arm64-v8a/libpairipcore.so"
         val soFile = resourceFile(soPath)
         if (!soFile.exists()) {
@@ -137,38 +170,92 @@ val bypassPlayIntegrityPatch = patch(
         }
 
         val bytes = soFile.readBytes()
+        var modified = false
 
+        // 手順 4
         // cbnz w8, 0x6d7f4 (word 0x3500bac8, little-endian)
         val original = byteArrayOf(0xc8.toByte(), 0xba.toByte(), 0x00, 0x35)
         // b 0x6d7f4 (word 0x140005d6, little-endian)
         val patched = byteArrayOf(0xd6.toByte(), 0x05, 0x00, 0x14)
         val expectedOffset = 0x6c09c
 
-        // すでにパッチ済みなら何もしない（冪等）。
-        if (bytes.size > expectedOffset + 4 &&
-            bytes.copyOfRange(expectedOffset, expectedOffset + 4).contentEquals(patched)
+        // すでにパッチ済みならこの手順だけスキップ（冪等）。
+        if (!(bytes.size > expectedOffset + 4 &&
+                bytes.copyOfRange(expectedOffset, expectedOffset + 4).contentEquals(patched))
         ) {
-            return@execute
+            // バイト列を検索し、0x6c09c に 1 箇所だけ存在することを確認する。
+            val occurrences = mutableListOf<Int>()
+            var index = bytes.indexOfSubarray(original)
+            while (index >= 0) {
+                occurrences.add(index)
+                index = bytes.indexOfSubarray(original, index + 1)
+            }
+            if (occurrences.size != 1 || occurrences[0] != expectedOffset) {
+                throw PatchException(
+                    "libpairipcore.so の autoprotect 分岐が見つかりません。" +
+                        "想定オフセット 0x6c09c のバイト列が ${occurrences.size} 箇所見つかりました " +
+                        "(${occurrences.joinToString { "0x" + it.toString(16) }})。" +
+                        "対応する libpairipcore.so のバージョンが違います。"
+                )
+            }
+
+            patched.copyInto(bytes, expectedOffset)
+            modified = true
         }
 
-        // バイト列を検索し、0x6c09c に 1 箇所だけ存在することを確認する。
-        val occurrences = mutableListOf<Int>()
-        var index = bytes.indexOfSubarray(original)
-        while (index >= 0) {
-            occurrences.add(index)
-            index = bytes.indexOfSubarray(original, index + 1)
+        // 手順 5
+        // b.ne 0x592e8 (word 0x54000081, little-endian)
+        // b 0x592dc (word 0x14000001, little-endian)
+        val verifierPatched = byteArrayOf(0x01, 0x00, 0x00, 0x14)
+        val verifierOffset = 0x592d8
+        // 12 バイトのアンカー（cmp x11, x13 + b.ne 0x592e8 + mov w8, #0x18）。
+        // 4 バイトの b.ne だけでは .so 内に 34 箇所あるため、アンカーで一意に特定する。
+        val verifierAnchor = byteArrayOf(
+            0x7f, 0x01, 0x0d, 0xeb.toByte(),
+            0x81.toByte(), 0x00, 0x00, 0x54,
+            0x08, 0x03, 0x80.toByte(), 0x52
+        )
+        val verifierAnchorOffset = 0x592d4
+
+        // すでにパッチ済みならこの手順だけスキップ（冪等）。
+        // （パッチ済みだとアンカー内の b.ne が書き換わっているため、先に確認する）
+        if (!(bytes.size > verifierOffset + 4 &&
+                bytes.copyOfRange(verifierOffset, verifierOffset + 4).contentEquals(verifierPatched))
+        ) {
+            // アンカーを検索し、0x592d4 に 1 箇所だけ存在することを確認する。
+            val anchorOccurrences = mutableListOf<Int>()
+            var anchorIndex = bytes.indexOfSubarray(verifierAnchor)
+            while (anchorIndex >= 0) {
+                anchorOccurrences.add(anchorIndex)
+                anchorIndex = bytes.indexOfSubarray(verifierAnchor, anchorIndex + 1)
+            }
+            if (anchorOccurrences.size != 1 || anchorOccurrences[0] != verifierAnchorOffset) {
+                throw PatchException(
+                    "libpairipcore.so の integrity-verifier 分岐が見つかりません。" +
+                        "想定オフセット 0x592d4 のアンカーが ${anchorOccurrences.size} 箇所見つかりました " +
+                        "(${anchorOccurrences.joinToString { "0x" + it.toString(16) }})。" +
+                        "対応する libpairipcore.so のバージョンが違います。"
+                )
+            }
+
+            verifierPatched.copyInto(bytes, verifierOffset)
+            modified = true
         }
-        if (occurrences.size != 1 || occurrences[0] != expectedOffset) {
-            throw PatchException(
-                "libpairipcore.so の autoprotect 分岐が見つかりません。" +
-                    "想定オフセット 0x6c09c のバイト列が ${occurrences.size} 箇所見つかりました " +
-                    "(${occurrences.joinToString { "0x" + it.toString(16) }})。" +
-                    "対応する libpairipcore.so のバージョンが違います。"
+
+        if (modified) {
+            soFile.writeBytes(bytes)
+        }
+
+        // 6. SignatureCheck.verifyIntegrity(Context) を先頭で即リターン
+        //    （Morphe の署名を検出したときの SignatureTamperedException を止める）
+        try {
+            VerifyIntegrityFingerprint.method.addInstructions(
+                0,
+                "return-void"
             )
+        } catch (_: PatchException) {
+            // 対象メソッドが存在しない場合はスキップ
         }
-
-        patched.copyInto(bytes, expectedOffset)
-        soFile.writeBytes(bytes)
     }
 }
 
